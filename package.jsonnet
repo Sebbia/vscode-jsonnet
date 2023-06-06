@@ -59,6 +59,10 @@ package.contributes.DefaultConfiguration(
     "Additional paths to search for libraries when compiling Jsonnet code.") +
   contributes.configuration.DefaultObjectProperty(
     "jsonnet.extStrs", "External strings to pass to `jsonnet` executable.") +
+  contributes.configuration.DefaultObjectProperty(
+    "jsonnet.tlaStrs", "Top-level arguments to pass to `jsonnet` executable as strings.") +
+  contributes.configuration.DefaultObjectProperty(
+    "jsonnet.tlaCodes", "Top-level arguments to pass to `jsonnet` executable as code.") +
   contributes.configuration.DefaultEnumProperty(
     "jsonnet.outputFormat",
     "Preview output format (yaml / json)",

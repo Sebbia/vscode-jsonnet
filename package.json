@@ -85,6 +85,16 @@
           "description": "External strings to pass to `jsonnet` executable.",
           "type": "object"
         },
+        "jsonnet.tlaStrs": {
+          "default": null,
+          "description": "Top-level arguments to pass to `jsonnet` executable as strings.",
+          "type": "object"
+        },
+        "jsonnet.tlaCodes": {
+          "default": null,
+          "description": "Top-level arguments to pass to `jsonnet` executable as code.",
+          "type": "object"
+        },
         "jsonnet.libPaths": {
           "default": [],
           "description": "Additional paths to search for libraries when compiling Jsonnet code.",
