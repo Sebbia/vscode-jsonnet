@@ -3,6 +3,10 @@ All notable changes to the "Jsonnet NG" extension will be documented in this fil
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [1.4.0] 2023-06-07
+## Added
+- Add support for TLA arguments being passed to `jsonnet`
+
 ## [1.3.0] 2022-01-16
 ## Added
 - Add settings for `jsonnetfmt` options
