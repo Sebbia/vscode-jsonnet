@@ -51,6 +51,8 @@ in `settings.json`:
   It suppports variable substitution: `${workspaceFolder}`.
 * `jsonnet.outputFormat`: Preview output format: yaml or json (default is yaml).
 * `jsonnet.extStrs`: External strings to pass to `jsonnet` executable.
+* `jsonnet.tlaStrs`: Top-level arguments to pass to `jsonnet` executable as strings.
+* `jsonnet.tlaCodes`: Top-level arguments to pass to `jsonnet` executable as code.
 
 This extension exposes the following commands, which can be bound to
 keys:
@@ -66,6 +68,16 @@ keys:
 * `jsonnet.extStrs`: An object of variable, value pairs. Allows you to
   customize the external variables passed to the `jsonnet` command
   line. It can be particularly useful to set this in a workspace
+  configuration, so that you can set different variables on a
+  per-project basis.
+* `jsonnet.tlaStrs`: An object of variable, value pairs. Allows you to
+  customize the top level arguments passed to the `jsonnet` command
+  line as strings. It can be particularly useful to set this in a workspace
+  configuration, so that you can set different variables on a
+  per-project basis.
+* `jsonnet.tlaCodes`: An object of variable, value pairs. Allows you to
+  customize the top level arguments passed to the `jsonnet` command
+  line as jsonnet code. It can be particularly useful to set this in a workspace
   configuration, so that you can set different variables on a
   per-project basis.
 * `jsonnet.outputFormat`: A choice of two string literals: `["json",

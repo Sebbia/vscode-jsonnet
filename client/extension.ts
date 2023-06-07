@@ -107,7 +107,9 @@ namespace register {
 }
 
 namespace workspace {
-  const extStrsProp = "extStrs";
+  const extStrsProp  = "extStrs";
+  const tlaStrsProp  = "tlaStrs";
+  const tlaCodesProp = "tlaCodes";
   const execPathProp = "executablePath";
 
   export const extStrs = (): string => {
@@ -118,7 +120,25 @@ namespace workspace {
         .map(key => `--ext-str ${key}="${extStrsObj[key]}"`)
         .join(" ");
   }
-  
+
+  export const tlaStrs = (): string => {
+    const tlaStrsObj = vs.workspace.getConfiguration('jsonnet')[tlaStrsProp];
+    return tlaStrsObj == null
+      ? ""
+      : Object.keys(tlaStrsObj)
+        .map(key => `--tla-str ${key}="${tlaStrsObj[key]}"`)
+        .join(" ");
+  }
+
+  export const tlaCodes = (): string => {
+    const tlaCodesObj = vs.workspace.getConfiguration('jsonnet')[tlaCodesProp];
+    return tlaCodesObj == null
+      ? ""
+      : Object.keys(tlaCodesObj)
+        .map(key => `--tla-code ${key}="${tlaCodesObj[key]}"`)
+        .join(" ");
+  }
+
   const expandPathVariables = (path: string): string => {
     return path.replace(/\${workspaceFolder}/g, vs.workspace.workspaceFolders?.[0].uri.fsPath);
   }
@@ -365,10 +385,12 @@ namespace jsonnet {
 
       try {
         // Compile the preview Jsonnet file.
-        const extStrs = workspace.extStrs();
+        const extStrs  = workspace.extStrs();
+        const tlaStrs  = workspace.tlaStrs();
+        const tlaCodes = workspace.tlaCodes();
         const libPaths = workspace.libPaths();
         const jsonOutput = execSync(
-          `${jsonnet.executable} ${libPaths} ${extStrs} ${codePaths} ${sourceFile}`
+          `${jsonnet.executable} ${libPaths} ${extStrs} ${tlaStrs} ${tlaCodes} ${codePaths} ${sourceFile}`
         ).toString();
 
         // Cache.
