@@ -124,6 +124,9 @@ export abstract class LibPathResolver {
     if (!parsed || !parsed.path || parsed.protocol !== "file:") {
       throw new Error(`INTERNAL ERROR: Failed to parse URI '${fileSpec}'`);
     }
+    parsed.path = url.fileURLToPath(importPath)
+    parsed.pathname = url.fileURLToPath(importPath)
+
     return parsed;
   }
 

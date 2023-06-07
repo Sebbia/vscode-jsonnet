@@ -102,6 +102,8 @@ export class VsCompilerService implements _static.LexicalAnalyzerService {
     if (!parsedUrl || !parsedUrl.path) {
       throw new Error(`INTERNAL ERROR: Failed to parse URI '${fileUri}'`);
     }
+    parsedUrl.path = url.fileURLToPath(fileUri)
+    parsedUrl.pathname = url.fileURLToPath(fileUri)
 
     const lex = lexer.Lex(parsedUrl.path, text);
     if (lexical.isStaticError(lex)) {
